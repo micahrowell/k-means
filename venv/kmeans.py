@@ -1,6 +1,8 @@
 #!/usr/bin/python
 import sys
 import numpy as np
+import matplotlib.pyplot as plt
+from scipy import cluster
 from random import randint as rand
 
 def distance(point,centroid):
@@ -8,6 +10,11 @@ def distance(point,centroid):
     for i in range(len(point) - 1):
         sum += (centroid[i] - point[i]) ** 2
     return np.sqrt(sum)
+
+def plotData():
+    pValues = np.array(values)
+    plt.scatter(pValues[:, 0], pValues[:, 1], c = pValues[:, 2])
+    plt.show()
 
 fileName = sys.argv[1]
 k = int(sys.argv[2])
@@ -81,3 +88,5 @@ for i in range(len(values)):
             outdata += str(values[i][j]) + ' '
 
 fout.write(outdata)
+
+plotData()
