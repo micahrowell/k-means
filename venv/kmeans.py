@@ -5,7 +5,7 @@ from random import randint as rand
 
 def distance(point,centroid):
     sum = 0
-    for i in range(len(point)):
+    for i in range(len(point) - 1):
         sum += (centroid[i] - point[i]) ** 2
     return np.sqrt(sum)
 
@@ -56,6 +56,20 @@ while changed:
             changed = True
         else:
             changed = False
+        del j
+    del i
+    for i in range(k):
+        sum = [0] * k
+        inThis = 0
+        for j in range(len(values)):
+            if values[j][-1] == i:
+                inThis += 1
+                for n in range(k):
+                    sum[n] += values[j][n]
+        for j in range(len(sum)):
+            sum[j] /= inThis
+        centroids[i] = sum
+    del i
 
 outdata = ''
 
