@@ -2,7 +2,6 @@
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy import cluster
 from random import randint as rand
 
 def distance(point,centroid):
